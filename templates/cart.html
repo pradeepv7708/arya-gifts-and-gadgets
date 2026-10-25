@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Your Cart — Arya Gifts & Gadgets{% endblock %}
+{% block content %}
+<main class="inner-page">
+  <p class="eyebrow">YOUR LITTLE JOYS</p><h1>Your Shopping Cart</h1>
+  {% if items %}
+    <div class="cart-list">
+      {% for item in items %}
+      <div class="cart-item"><img src="{{ item.image }}" alt="{{ item.name }}"><div class="cart-item-info"><h3>{{ item.name }}</h3><p>₹{{ item.price }} × {{ item.quantity }}</p><form action="{{ url_for('remove_from_cart', product_id=item.id) }}" method="post"><button class="remove-link">Remove</button></form></div><strong>₹{{ item.line_total }}</strong></div>
+      {% endfor %}
+    </div>
+    <div class="cart-total"><span>Subtotal</span><strong>₹{{ total }}</strong></div>
+    <p class="muted">Shipping and final charges can be confirmed with the store.</p>
+    <a class="button button-dark" href="{{ url_for('checkout') }}">CONTINUE TO CHECKOUT ↗</a>
+  {% else %}
+    <p>Your cart is waiting for something lovely.</p><a class="button button-dark" href="{{ url_for('home') }}#products">EXPLORE GIFTS ↗</a>
+  {% endif %}
+</main>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Order Received — Arya Gifts & Gadgets{% endblock %}
+{% block content %}
+<main class="inner-page success-page">
+  <div class="success-symbol">♡</div><p class="eyebrow">THANK YOU</p><h1>Your demo order is received!</h1>
+  <p>Thanks, {{ order.name }}. This is a demonstration checkout, not a real order. No payment was collected.</p>
+  <div class="success-details"><p><strong>Phone:</strong> {{ order.phone }}</p><p><strong>Delivery address:</strong> {{ order.address }}</p><p><strong>Payment method:</strong> {{ order.payment_method }}</p><p><strong>Total:</strong> ₹{{ order.total }}</p></div>
+  <a class="button button-dark" href="{{ url_for('home') }}">BACK TO SHOP ↗</a>
+</main>
+{% endblock %}
